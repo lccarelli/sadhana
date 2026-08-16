@@ -1,0 +1,225 @@
+{
+  "@@locale": "en",
+  "@@comment": "TEMPLATE. Every other language must define every key here or the build fails (see l10n_missing.json). Corpus content — sutras, asana descriptions, articles — does NOT belong in this file: it lives in the database with a locale column, so a new translation ships without an app release.",
+
+  "appName": "Samyama",
+  "@appName": {
+    "description": "In-app product name. The launcher name lives in ios/Runner/Info.plist and android/app/src/main/AndroidManifest.xml and must be changed there too."
+  },
+  "appSignature": "Laura de Trantor",
+
+  "navToday": "Today",
+  "navStudy": "Study",
+  "navJournal": "Journal",
+  "navBody": "Body",
+  "navPath": "Path",
+
+  "todayTitle": "Your sadhana today",
+  "todaySavedSequence": "Saved sequence",
+  "todayStart": "Start",
+  "todayStepsAndTime": "{steps} steps · {minutes} min",
+  "@todayStepsAndTime": {
+    "placeholders": {
+      "steps": { "type": "int" },
+      "minutes": { "type": "int" }
+    }
+  },
+  "todayContinuity": "Continuity · {days} days",
+  "@todayContinuity": {
+    "placeholders": { "days": { "type": "int" } }
+  },
+  "todayReading": "Reading",
+
+  "seqSlowMorning": "Slow morning",
+  "seqEveningUnwind": "Evening unwind",
+
+  "sequencesTitle": "Practices",
+  "sequencesIncluded": "Included",
+  "sequencesYours": "Yours",
+  "sequencesNew": "New practice",
+  "sequencesEmpty": "You haven't composed a practice yet",
+  "sequencesChoose": "Choose",
+  "sequencesEdit": "Edit",
+  "sequencesDuplicate": "Duplicate",
+  "sequencesDelete": "Delete",
+  "sequencesDeleted": "{title} deleted",
+  "@sequencesDeleted": {
+    "placeholders": { "title": { "type": "String" } }
+  },
+  "sequencesUndo": "Undo",
+  "sequencesCopySuffix": "{title} (copy)",
+  "@sequencesCopySuffix": {
+    "placeholders": { "title": { "type": "String" } }
+  },
+  "sequencesSeededNotice": "Included practices can't be edited — this opens your own copy.",
+
+  "editorTitleHint": "Name this practice",
+  "editorUntitled": "Untitled practice",
+  "editorSteps": "Steps",
+  "editorAddStep": "Add step",
+  "editorNoSteps": "A practice needs at least one step",
+  "editorSave": "Save",
+  "editorDiscard": "Discard changes?",
+  "editorTotal": "{steps} steps · {minutes} min",
+  "@editorTotal": {
+    "placeholders": {
+      "steps": { "type": "int" },
+      "minutes": { "type": "int" }
+    }
+  },
+
+  "stepBreath": "Breath",
+  "stepAsana": "Posture",
+  "stepFocus": "Focus",
+  "stepSilence": "Silence",
+  "stepReading": "Reading",
+  "stepCycles": "Cycles",
+  "stepPattern": "Pattern",
+  "stepDuration": "Duration",
+  "stepSide": "Side",
+  "stepSideBoth": "Not specified",
+  "stepPosture": "Posture",
+  "stepFocusObject": "Object of attention",
+  "stepText": "Text",
+  "stepSeconds": "{count} s",
+  "@stepSeconds": {
+    "placeholders": { "count": { "type": "int" } }
+  },
+  "stepMinutesSeconds": "{minutes}:{seconds}",
+  "@stepMinutesSeconds": {
+    "placeholders": {
+      "minutes": { "type": "String" },
+      "seconds": { "type": "String" }
+    }
+  },
+  "stepCyclesCount": "{count} cycles",
+  "@stepCyclesCount": {
+    "placeholders": { "count": { "type": "int" } }
+  },
+
+  "breathInhale": "Inhale",
+  "breathHoldIn": "Hold",
+  "breathExhale": "Exhale",
+  "breathHoldOut": "Empty",
+
+  "runnerCycle": "Cycle {cycle} of {total} · {pattern}",
+  "@runnerCycle": {
+    "placeholders": {
+      "cycle": { "type": "int" },
+      "total": { "type": "int" },
+      "pattern": { "type": "String" }
+    }
+  },
+  "runnerNext": "Next · {step}",
+  "@runnerNext": { "placeholders": { "step": { "type": "String" } } },
+  "runnerLastStep": "Last step",
+  "runnerPaused": "Paused",
+  "runnerExit": "Leave practice",
+  "runnerComplete": "Complete",
+  "runnerHold": "Hold",
+  "runnerSilence": "Silence",
+  "runnerFocus": "Focus",
+  "runnerReading": "Reading",
+  "runnerSideLeft": "Left",
+  "runnerSideRight": "Right",
+
+  "focusBreathAtNostrils": "The breath at the nostrils",
+
+  "journalTitle": "How was it?",
+  "journalJustFinished": "Just finished · {minutes} min",
+  "@journalJustFinished": {
+    "placeholders": { "minutes": { "type": "int" } }
+  },
+  "journalSthira": "Steadiness — sthira",
+  "journalSukha": "Ease — sukha",
+  "journalNote": "Note",
+  "journalNoteHint": "What happened. Nobody else will read this.",
+  "journalSavedWith": "Saved with",
+  "journalPrivacy": "On this device only. None of this leaves your phone.",
+  "journalSave": "Save",
+  "journalSaved": "Saved",
+  "journalSkip": "Skip",
+  "journalEmpty": "Nothing recorded yet",
+  "journalEmptyDetail": "Practices appear here as soon as you finish one — or abandon one. Both count.",
+  "journalNoNote": "No note",
+  "journalPartial": "{percent}% of the practice",
+  "@journalPartial": {
+    "placeholders": { "percent": { "type": "int" } }
+  },
+  "journalHistory": "Practices",
+  "journalMinutes": "{minutes} min",
+  "@journalMinutes": {
+    "placeholders": { "minutes": { "type": "int" } }
+  },
+  "journalTotalPractices": "{count} practices · {hours}h total",
+  "@journalTotalPractices": {
+    "placeholders": {
+      "count": { "type": "int" },
+      "hours": { "type": "String" }
+    }
+  },
+
+  "settingsTitle": "Settings",
+  "settingsTheme": "Theme",
+  "settingsThemeAuto": "Automatic",
+  "settingsThemeAutoDetail": "Light from {lightHour}:00, dark from {darkHour}:00",
+  "@settingsThemeAutoDetail": {
+    "placeholders": {
+      "lightHour": { "type": "int" },
+      "darkHour": { "type": "int" }
+    }
+  },
+  "settingsThemeLight": "Light",
+  "settingsThemeDark": "Dark",
+  "settingsLanguage": "Language",
+  "settingsAbout": "About",
+
+  "angaYama": "How you meet the world",
+  "angaNiyama": "How you meet yourself",
+  "angaAsana": "Posture, steady and at ease",
+  "angaPranayama": "The extension of the breath",
+  "angaPratyahara": "The senses turned inward",
+  "angaDharana": "Fixing the attention",
+  "angaDhyana": "Attention flowing by itself",
+  "angaSamadhi": "The one attending dissolves",
+
+  "limbOuter": "Outer limbs",
+  "limbInner": "Inner limbs",
+  "limbNumber": "Limb {n}",
+  "@limbNumber": { "placeholders": { "n": { "type": "int" } } },
+
+  "studySource": "Trans. {translator} · {license}",
+  "@studySource": {
+    "placeholders": {
+      "translator": { "type": "String" },
+      "license": { "type": "String" }
+    }
+  },
+  "studyPublicDomain": "public domain",
+  "studyAnnotated": "Annotated",
+  "studyPracticed": "Practiced ×{count}",
+  "@studyPracticed": { "placeholders": { "count": { "type": "int" } } },
+
+  "bodyStretches": "Stretches",
+  "bodyEngages": "Engages",
+  "bodyCareful": "Take care",
+  "bodySubtle": "subtle layer · orientation only",
+  "bodyPostures": "Postures",
+  "bodyTapMuscle": "Tap a muscle to find it in the posture",
+  "bodyDisclaimer": "Guidance for practice, not medical advice. Pain is information — stop and ask a teacher.",
+  "bodyPrimary": "Primary",
+
+  "muscleExternalOblique": "External oblique",
+  "muscleQuadratusLumborum": "Quadratus lumborum",
+  "muscleHamstrings": "Hamstrings",
+  "muscleQuadriceps": "Quadriceps",
+  "muscleGlutes": "Glutes",
+  "musclePsoas": "Psoas",
+  "musclePectorals": "Pectorals",
+  "muscleLatissimus": "Latissimus dorsi",
+  "muscleDeltoids": "Deltoids",
+  "muscleSpinalErectors": "Spinal erectors",
+  "muscleAdductors": "Adductors",
+  "muscleCalves": "Calves",
+  "muscleSacroiliacJoint": "Sacroiliac joint"
+}
