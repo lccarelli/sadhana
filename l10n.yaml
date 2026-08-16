@@ -1,0 +1,12 @@
+# One .arb per language. Adding a language = adding one file here + one
+# locale in AppLocales. Nothing else changes.
+arb-dir: lib/l10n
+template-arb-file: app_en.arb
+output-localization-file: app_localizations.dart
+output-class: L
+output-dir: lib/l10n/generated
+nullable-getter: false
+
+# Fail the build when a language is missing a key, instead of silently
+# falling back to English in production.
+untranslated-messages-file: l10n_missing.json
