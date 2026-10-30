@@ -2,7 +2,6 @@ import 'dart:async';
 
 import 'package:flutter/material.dart';
 import 'package:flutter/scheduler.dart';
-import 'package:flutter/services.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
 import '../../app/providers.dart';
@@ -13,6 +12,7 @@ import '../journal/journal_entry_screen.dart';
 import 'practice_body.dart';
 import 'practice_controller.dart';
 import 'practice_exit_button.dart';
+import 'practice_focus_mode.dart';
 
 class PracticeScreen extends ConsumerStatefulWidget {
   const PracticeScreen({super.key, required this.sequence});
@@ -47,7 +47,7 @@ class _PracticeScreenState extends ConsumerState<PracticeScreen>
     unawaited(_controller.start());
     WidgetsBinding.instance.addObserver(this);
 
-    SystemChrome.setEnabledSystemUIMode(SystemUiMode.immersive);
+    unawaited(PracticeFocusMode.enter());
   }
 
   @override
@@ -63,7 +63,7 @@ class _PracticeScreenState extends ConsumerState<PracticeScreen>
     WidgetsBinding.instance.removeObserver(this);
     _ticker.dispose();
     _controller.dispose();
-    SystemChrome.setEnabledSystemUIMode(SystemUiMode.edgeToEdge);
+    unawaited(PracticeFocusMode.exit());
     super.dispose();
   }
 

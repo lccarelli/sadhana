@@ -227,8 +227,8 @@ breaking into exactly two lines — test in the long language.
 
 - **The practice screen is not a tab.** It is pushed full-screen with no
   navigation bar, no small controls and large type: it is read sideways from
-  a mat. Tap anywhere pauses, swipe moves between steps, and the system UI is
-  hidden.
+  a mat. Tap anywhere pauses, swipe moves between steps, the system UI is
+  hidden and the screen stays on (`PracticeFocusMode`).
 - **Leaving a practice needs no confirmation.** Someone reaching for the exit
   is usually being interrupted, and nothing is lost: the session closes as
   partial.
