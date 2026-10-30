@@ -175,6 +175,12 @@ abstract class L {
   /// **'Reading'**
   String get todayReading;
 
+  /// No description provided for @todayReadingWork.
+  ///
+  /// In en, this message translates to:
+  /// **'Yoga Sutras — Pada I'**
+  String get todayReadingWork;
+
   /// No description provided for @seqSlowMorning.
   ///
   /// In en, this message translates to:

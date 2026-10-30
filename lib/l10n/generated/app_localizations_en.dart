@@ -52,6 +52,9 @@ class LEn extends L {
   String get todayReading => 'Reading';
 
   @override
+  String get todayReadingWork => 'Yoga Sutras — Pada I';
+
+  @override
   String get seqSlowMorning => 'Slow morning';
 
   @override

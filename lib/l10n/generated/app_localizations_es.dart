@@ -52,6 +52,9 @@ class LEs extends L {
   String get todayReading => 'Leyendo';
 
   @override
+  String get todayReadingWork => 'Yoga Sutras — Pada I';
+
+  @override
   String get seqSlowMorning => 'Mañana lenta';
 
   @override

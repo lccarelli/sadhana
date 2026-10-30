@@ -8,7 +8,6 @@ import '../../l10n/l10n_x.dart';
 import 'asana_figure_view.dart';
 import 'asana_screen.dart';
 
-/// The postures we ship, each drawn rather than photographed.
 class BodyScreen extends StatelessWidget {
   const BodyScreen({super.key});
 

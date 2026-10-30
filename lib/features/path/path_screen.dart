@@ -6,12 +6,6 @@ import '../../design_system/typography.dart';
 import '../../design_system/widgets.dart';
 import '../../l10n/l10n_x.dart';
 
-/// The eight limbs as a ladder.
-///
-/// Numbered because they genuinely are a sequence — Patanjali's order carries
-/// information. The progression is drawn with opacity on a single accent
-/// rather than eight hues, so the eye reads a path instead of eight
-/// unrelated categories.
 class PathScreen extends StatelessWidget {
   const PathScreen({super.key});
 
@@ -53,7 +47,6 @@ class _Rung extends StatelessWidget {
     final l = context.l;
     final c = context.colors;
 
-    // 0.46 at yama through 1.0 at samadhi: the ladder is felt, not labelled.
     final weight = 0.46 + 0.54 * ((anga.position - 1) / 7);
 
     return Container(

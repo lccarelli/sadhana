@@ -1,6 +1,7 @@
 import 'package:flutter_test/flutter_test.dart';
 import 'package:sadhana/core/domain/anga.dart';
 import 'package:sadhana/data/corpus/seed_corpus.dart';
+import 'package:sadhana/data/corpus/in_memory_corpus_repository.dart';
 
 void main() {
   const repo = InMemoryCorpusRepository();
@@ -26,29 +27,37 @@ void main() {
     });
 
     test('falls back rather than showing a blank verse', () async {
-      // A text may legitimately exist in one language before another.
       final pt = await repo.byId('ys.1.2', 'pt');
       expect(pt, isNotNull);
       expect(pt!.translation.localeCode, 'en');
     });
 
-    test('is queryable by limb — the taxonomy is real, not decorative',
-        () async {
-      final asana = await repo.byAnga(Anga.asana, 'es');
-      expect(asana.map((t) => t.text.id), contains('ys.2.46'));
-    });
+    test(
+      'is queryable by limb — the taxonomy is real, not decorative',
+      () async {
+        final asana = await repo.byAnga(Anga.asana, 'es');
+        expect(asana.map((t) => t.text.id), contains('ys.2.46'));
+      },
+    );
 
     test('every translation carries a translator and a licence', () {
-      // The corpus is the asset being sold. Every line has to be defensible.
       for (final t in SeedCorpus.translations) {
-        expect(t.translator, isNotEmpty, reason: '${t.textId} has no translator');
+        expect(
+          t.translator,
+          isNotEmpty,
+          reason: '${t.textId} has no translator',
+        );
         expect(t.license, isNotEmpty, reason: '${t.textId} has no licence');
       }
     });
 
     test('every text is tagged with at least one limb', () {
       for (final t in SeedCorpus.texts) {
-        expect(t.angas, isNotEmpty, reason: '${t.id} is untagged and unfindable');
+        expect(
+          t.angas,
+          isNotEmpty,
+          reason: '${t.id} is untagged and unfindable',
+        );
       }
     });
   });

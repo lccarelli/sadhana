@@ -4,11 +4,6 @@ import 'package:sadhana/core/domain/practice_step.dart';
 import 'package:sadhana/data/sadhana/database.dart';
 import 'package:sadhana/data/sadhana/sequence_repository.dart';
 
-/// The v1 schema, verbatim from what drift generated before sequences existed.
-///
-/// Hardcoded on purpose. If it were derived from the current table
-/// definitions it would silently follow them forward, and the test would
-/// "pass" while proving nothing about a real upgrade.
 const _v1Schema = [
   'CREATE TABLE "sessions" ("id" INTEGER NOT NULL PRIMARY KEY AUTOINCREMENT, '
       '"sequence_id" TEXT NOT NULL, "started_at" INTEGER NOT NULL, '
@@ -30,35 +25,32 @@ const _v1Schema = [
 ];
 
 void main() {
-  /// A database as it looked before this feature, carrying practice history
-  /// that must survive the upgrade. A journal is the one thing in this app
-  /// that cannot be recreated.
   SadhanaDatabase openV1WithHistory() => SadhanaDatabase(
-        NativeDatabase.memory(
-          setup: (raw) {
-            for (final statement in _v1Schema) {
-              raw.execute(statement);
-            }
-            raw.execute(
-              'INSERT INTO sessions (sequence_id, started_at, ended_at, '
-              'planned_seconds, practised_seconds, completed) '
-              'VALUES (?, ?, ?, ?, ?, ?)',
-              ['seq.slow_morning', 1755300000, 1755301452, 1452, 1452, 1],
-            );
-            raw.execute(
-              'INSERT INTO journal_entries (session_id, created_at, sthira, '
-              'sukha, note, angas) VALUES (?, ?, ?, ?, ?, ?)',
-              [1, 1755301460, 4, 3, 'the long hold let go on its own', 'asana'],
-            );
-            raw.execute(
-              'INSERT INTO text_encounters (text_id, session_id, at) '
-              'VALUES (?, ?, ?)',
-              ['ys.1.2', 1, 1755301000],
-            );
-            raw.execute('PRAGMA user_version = 1');
-          },
-        ),
-      );
+    NativeDatabase.memory(
+      setup: (raw) {
+        for (final statement in _v1Schema) {
+          raw.execute(statement);
+        }
+        raw.execute(
+          'INSERT INTO sessions (sequence_id, started_at, ended_at, '
+          'planned_seconds, practised_seconds, completed) '
+          'VALUES (?, ?, ?, ?, ?, ?)',
+          ['seq.slow_morning', 1755300000, 1755301452, 1452, 1452, 1],
+        );
+        raw.execute(
+          'INSERT INTO journal_entries (session_id, created_at, sthira, '
+          'sukha, note, angas) VALUES (?, ?, ?, ?, ?, ?)',
+          [1, 1755301460, 4, 3, 'the long hold let go on its own', 'asana'],
+        );
+        raw.execute(
+          'INSERT INTO text_encounters (text_id, session_id, at) '
+          'VALUES (?, ?, ?)',
+          ['ys.1.2', 1, 1755301000],
+        );
+        raw.execute('PRAGMA user_version = 1');
+      },
+    ),
+  );
 
   group('upgrading from v1', () {
     test('keeps every session and its entry', () async {
@@ -85,7 +77,6 @@ void main() {
       final db = openV1WithHistory();
       addTearDown(db.close);
 
-      // Force the migration to run before reading the pragma.
       await db.select(db.sessions).get();
       final row = await db.customSelect('PRAGMA user_version').getSingle();
 
@@ -111,8 +102,9 @@ void main() {
       final db = openV1WithHistory();
       addTearDown(db.close);
 
-      final practisedAt =
-          DateTime.fromMillisecondsSinceEpoch(1755300000 * 1000);
+      final practisedAt = DateTime.fromMillisecondsSinceEpoch(
+        1755300000 * 1000,
+      );
       final days = await db.continuity(today: practisedAt, days: 14);
 
       expect(days.last, 1452, reason: 'the old session is the last bucket');

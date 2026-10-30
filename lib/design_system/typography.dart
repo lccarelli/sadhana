@@ -1,14 +1,6 @@
 import 'package:flutter/material.dart';
 
-/// Four roles, no exceptions.
-///
-/// Families are expressed as fallback lists so the scaffold runs today on the
-/// system faces. Ship-blocking follow-up: bundle a display serif and Noto
-/// Sans Devanagari (see assets/fonts/README.md), because Android has neither
-/// Iowan Old Style nor a guaranteed Indic face, and a silent fallback to
-/// Roboto would quietly undo the whole type system.
 abstract final class Faces {
-  /// Long-form reading: sutras, journal entries, practice titles.
   static const display = <String>[
     'IowanOldStyle',
     'Iowan Old Style',
@@ -18,18 +10,10 @@ abstract final class Faces {
     'serif',
   ];
 
-  /// Things that get operated. The platform face is the honest choice here.
   static const ui = <String>[];
 
-  /// Anything that counts time or repetitions. Always tabular.
-  static const mono = <String>[
-    'SF Mono',
-    'Menlo',
-    'Roboto Mono',
-    'monospace',
-  ];
+  static const mono = <String>['SF Mono', 'Menlo', 'Roboto Mono', 'monospace'];
 
-  /// Sanskrit. Never translated, so never restyled either.
   static const devanagari = <String>[
     'NotoSansDevanagari',
     'Devanagari Sangam MN',
@@ -41,7 +25,6 @@ abstract final class Faces {
 abstract final class AppType {
   static const _tabular = [FontFeature.tabularFigures()];
 
-  /// Session and sutra titles.
   static const practiceTitle = TextStyle(
     fontFamilyFallback: Faces.display,
     fontSize: 28,
@@ -57,17 +40,14 @@ abstract final class AppType {
     fontWeight: FontWeight.w400,
   );
 
-  /// Lists, descriptions — anything operated rather than read.
   static const uiBody = TextStyle(fontSize: 15, height: 1.5);
 
-  /// Corpus text and journal. Read slowly, so it gets the serif.
   static const readingBody = TextStyle(
     fontFamilyFallback: Faces.display,
     fontSize: 16,
     height: 1.6,
   );
 
-  /// Angas, metadata, states.
   static const label = TextStyle(
     fontFamilyFallback: Faces.mono,
     fontSize: 11,
@@ -81,14 +61,12 @@ abstract final class AppType {
     height: 1.5,
   );
 
-  /// Transliteration sits between the devanagari and the vernacular.
   static const iast = TextStyle(
     fontFamilyFallback: Faces.display,
     fontSize: 12.5,
     fontStyle: FontStyle.italic,
   );
 
-  /// The runner countdown. Tabular so the digits do not jitter.
   static const countdown = TextStyle(
     fontFamilyFallback: Faces.mono,
     fontSize: 52,
@@ -109,11 +87,11 @@ abstract final class AppType {
   );
 
   static TextTheme textTheme(Color ink, Color ink2, Color muted) => TextTheme(
-        displayLarge: practiceTitle.copyWith(color: ink),
-        titleLarge: heading.copyWith(color: ink),
-        bodyLarge: readingBody.copyWith(color: ink),
-        bodyMedium: uiBody.copyWith(color: ink),
-        bodySmall: uiBody.copyWith(fontSize: 13, color: ink2),
-        labelSmall: label.copyWith(color: muted),
-      );
+    displayLarge: practiceTitle.copyWith(color: ink),
+    titleLarge: heading.copyWith(color: ink),
+    bodyLarge: readingBody.copyWith(color: ink),
+    bodyMedium: uiBody.copyWith(color: ink),
+    bodySmall: uiBody.copyWith(fontSize: 13, color: ink2),
+    labelSmall: label.copyWith(color: muted),
+  );
 }

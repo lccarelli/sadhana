@@ -216,9 +216,6 @@ class Session extends DataClass implements Insertable<Session> {
   final String sequenceId;
   final DateTime startedAt;
   final DateTime? endedAt;
-
-  /// What the sequence asked for, versus what actually happened. The gap is
-  /// interesting on its own — it is where skipping shows up.
   final int plannedSeconds;
   final int practisedSeconds;
   final bool completed;
@@ -666,15 +663,9 @@ class JournalEntry extends DataClass implements Insertable<JournalEntry> {
   final int id;
   final int? sessionId;
   final DateTime createdAt;
-
-  /// Sthira and sukha, 1–5, from Yoga Sutra II.46. Not stars, not emoji:
-  /// the tradition already had the right two axes.
   final int? sthira;
   final int? sukha;
   final String note;
-
-  /// Comma-separated anga names, denormalised on purpose — this is read far
-  /// more often than written, and a join table for five tags is overkill.
   final String angas;
   const JournalEntry({
     required this.id,
@@ -1671,9 +1662,6 @@ class SequenceRow extends DataClass implements Insertable<SequenceRow> {
   final String title;
   final DateTime createdAt;
   final DateTime updatedAt;
-
-  /// The seeded sequence id this was duplicated from, if any. Kept for
-  /// provenance, never for behaviour — a copy is fully independent.
   final String? derivedFrom;
   const SequenceRow({
     required this.id,
@@ -2230,8 +2218,6 @@ class StepRow extends DataClass implements Insertable<StepRow> {
   final int sequenceId;
   final int position;
   final String kind;
-
-  /// Timed steps: focus, silence, reading, and an asana's hold.
   final int? durationSeconds;
   final int? breathIn;
   final int? breathHoldIn;

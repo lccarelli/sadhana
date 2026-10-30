@@ -1,7 +1,3 @@
-// Not a test — a rendering harness. Run with:
-//   flutter test test/render_figures.dart
-// It writes one PNG per posture so the figures can actually be looked at.
-// Coordinates authored blind pass every assertion and still draw nonsense.
 import 'dart:io';
 import 'dart:ui' as ui;
 
@@ -49,8 +45,9 @@ void main() {
       await tester.runAsync(() async {
         final image = await boundary.toImage(pixelRatio: 2);
         final bytes = await image.toByteData(format: ui.ImageByteFormat.png);
-        File('${outDir.path}/${asana.id.replaceAll('.', '_')}.png')
-            .writeAsBytesSync(bytes!.buffer.asUint8List());
+        File(
+          '${outDir.path}/${asana.id.replaceAll('.', '_')}.png',
+        ).writeAsBytesSync(bytes!.buffer.asUint8List());
       });
     }
   });

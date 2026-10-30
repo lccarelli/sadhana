@@ -4,8 +4,6 @@ import 'package:flutter/material.dart';
 
 import '../../design_system/tokens.dart';
 
-/// The breathing ring. Fills over the current phase and empties into the
-/// next; the orb inside scales with the lungs and turns ember on the exhale.
 class BreathRing extends StatelessWidget {
   const BreathRing({
     super.key,
@@ -15,13 +13,10 @@ class BreathRing extends StatelessWidget {
     this.size = 214,
   });
 
-  /// 0..1 through the current phase.
   final double progress;
 
-  /// Whether the lungs are full — drives the orb scale.
   final bool expanded;
 
-  /// Ember instead of verdigris. Semantic, never decorative.
   final bool exhaling;
 
   final double size;

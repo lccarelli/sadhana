@@ -7,9 +7,6 @@ import '../path/path_screen.dart';
 import '../study/study_screen.dart';
 import '../today/today_screen.dart';
 
-/// The five tabs. The practice runner is deliberately *not* one of them: it
-/// is pushed full-screen with no navigation bar, because nothing should
-/// compete with it while someone is on the mat.
 class AppShell extends StatefulWidget {
   const AppShell({super.key});
 

@@ -19,9 +19,6 @@ class SadhanaApp extends ConsumerWidget {
       onGenerateTitle: (context) => L.of(context).appName,
       debugShowCheckedModeBanner: false,
 
-      // Both themes are always built; the controller only picks which one is
-      // in effect. Flutter then cross-fades between them over a full beat,
-      // which is the whole reason the clock rule is bearable.
       theme: AppTheme.light(),
       darkTheme: AppTheme.dark(),
       themeMode: theme.brightness == Brightness.dark

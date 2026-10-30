@@ -8,9 +8,6 @@ import '../../design_system/typography.dart';
 import '../../design_system/widgets.dart';
 import '../../l10n/l10n_x.dart';
 
-/// Corpus reading. Devanagari, transliteration and the vernacular in one
-/// column — the first two identical in every language, only the third
-/// translated.
 class StudyScreen extends ConsumerWidget {
   const StudyScreen({super.key});
 
@@ -18,13 +15,9 @@ class StudyScreen extends ConsumerWidget {
   Widget build(BuildContext context, WidgetRef ref) {
     final l = context.l;
     final c = context.colors;
-    final code = ref.watch(
-      localeCodeProvider(Localizations.localeOf(context)),
-    );
+    final code = ref.watch(localeCodeProvider(Localizations.localeOf(context)));
     final texts = ref.watch(workProvider((workId: 'ys', locale: code)));
 
-    // One query for the whole work, not one per verse. Empty until the first
-    // practice touches a text, which is exactly right.
     final encounters =
         ref.watch(encounterCountsProvider).valueOrNull ?? const <String, int>{};
 
@@ -56,10 +49,7 @@ class StudyScreen extends ConsumerWidget {
               ),
             const SizedBox(height: Space.md),
             for (final item in list)
-              _Sutra(
-                item: item,
-                practisedCount: encounters[item.text.id] ?? 0,
-              ),
+              _Sutra(item: item, practisedCount: encounters[item.text.id] ?? 0),
           ],
         ),
       ),
@@ -72,8 +62,6 @@ class _Sutra extends StatelessWidget {
 
   final LocalizedText item;
 
-  /// How many practices actually reached this text. The real bridge between
-  /// the two halves of the app — the library knows what happened on the mat.
   final int practisedCount;
 
   @override

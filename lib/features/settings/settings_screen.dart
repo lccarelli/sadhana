@@ -35,35 +35,36 @@ class SettingsScreen extends ConsumerWidget {
               children: [
                 MonoLabel(l.settingsTheme),
                 const SizedBox(height: Space.sm),
-                for (final mode in AppThemeMode.values)
-                  RadioListTile<AppThemeMode>(
-                    value: mode,
-                    // ignore: deprecated_member_use
-                    groupValue: theme.mode,
-                    // ignore: deprecated_member_use
-                    onChanged: (v) => theme.mode = v!,
-                    contentPadding: EdgeInsets.zero,
-                    title: Text(
-                      switch (mode) {
-                        AppThemeMode.auto => l.settingsThemeAuto,
-                        AppThemeMode.light => l.settingsThemeLight,
-                        AppThemeMode.dark => l.settingsThemeDark,
-                      },
-                      style: AppType.uiBody.copyWith(color: c.ink),
-                    ),
-                    subtitle: mode == AppThemeMode.auto
-                        ? Text(
-                            l.settingsThemeAutoDetail(
-                              theme.resolver.lightStartHour,
-                              theme.resolver.darkStartHour,
-                            ),
-                            style: AppType.uiBody.copyWith(
-                              fontSize: 12.5,
-                              color: c.muted,
-                            ),
-                          )
-                        : null,
+                RadioGroup<AppThemeMode>(
+                  groupValue: theme.mode,
+                  onChanged: (v) => theme.mode = v!,
+                  child: Column(
+                    children: [
+                      for (final mode in AppThemeMode.values)
+                        RadioListTile<AppThemeMode>(
+                          value: mode,
+                          contentPadding: EdgeInsets.zero,
+                          title: Text(switch (mode) {
+                            AppThemeMode.auto => l.settingsThemeAuto,
+                            AppThemeMode.light => l.settingsThemeLight,
+                            AppThemeMode.dark => l.settingsThemeDark,
+                          }, style: AppType.uiBody.copyWith(color: c.ink)),
+                          subtitle: mode == AppThemeMode.auto
+                              ? Text(
+                                  l.settingsThemeAutoDetail(
+                                    theme.resolver.lightStartHour,
+                                    theme.resolver.darkStartHour,
+                                  ),
+                                  style: AppType.uiBody.copyWith(
+                                    fontSize: 12.5,
+                                    color: c.muted,
+                                  ),
+                                )
+                              : null,
+                        ),
+                    ],
                   ),
+                ),
               ],
             ),
           ),
@@ -75,25 +76,24 @@ class SettingsScreen extends ConsumerWidget {
               children: [
                 MonoLabel(l.settingsLanguage),
                 const SizedBox(height: Space.sm),
-                for (final option in LocaleController.supported)
-                  RadioListTile<Locale?>(
-                    value: option,
-                    // ignore: deprecated_member_use
-                    groupValue: locale.locale,
-                    // ignore: deprecated_member_use
-                    onChanged: locale.set,
-                    contentPadding: EdgeInsets.zero,
-                    title: Text(
-                      // Each language names itself. Nobody should have to read
-                      // a language they do not speak to find their own.
-                      switch (option.languageCode) {
-                        'es' => 'Español',
-                        'en' => 'English',
-                        _ => option.languageCode,
-                      },
-                      style: AppType.uiBody.copyWith(color: c.ink),
-                    ),
+                RadioGroup<Locale?>(
+                  groupValue: locale.locale,
+                  onChanged: locale.set,
+                  child: Column(
+                    children: [
+                      for (final option in LocaleController.supported)
+                        RadioListTile<Locale?>(
+                          value: option,
+                          contentPadding: EdgeInsets.zero,
+                          title: Text(switch (option.languageCode) {
+                            'es' => 'Español',
+                            'en' => 'English',
+                            _ => option.languageCode,
+                          }, style: AppType.uiBody.copyWith(color: c.ink)),
+                        ),
+                    ],
                   ),
+                ),
               ],
             ),
           ),
@@ -105,10 +105,7 @@ class SettingsScreen extends ConsumerWidget {
               children: [
                 MonoLabel(l.settingsAbout),
                 const SizedBox(height: 6),
-                Text(
-                  l.appName,
-                  style: AppType.heading.copyWith(color: c.ink),
-                ),
+                Text(l.appName, style: AppType.heading.copyWith(color: c.ink)),
                 const SizedBox(height: 3),
                 Text(
                   l.appSignature,

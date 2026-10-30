@@ -29,6 +29,7 @@
     "placeholders": { "days": { "type": "int" } }
   },
   "todayReading": "Reading",
+  "todayReadingWork": "Yoga Sutras — Pada I",
 
   "seqSlowMorning": "Slow morning",
   "seqEveningUnwind": "Evening unwind",

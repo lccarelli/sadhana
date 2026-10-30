@@ -3,10 +3,6 @@ import 'package:flutter/material.dart';
 import 'tokens.dart';
 import 'typography.dart';
 
-/// The shirorekha: content *hangs* from a rule instead of sitting on it, the
-/// way devanagari letters hang from their headline. It is the only structural
-/// gesture in the system, so it is a widget rather than a stray Divider —
-/// that keeps it from drifting into decoration.
 class Hanging extends StatelessWidget {
   const Hanging({
     super.key,
@@ -26,10 +22,7 @@ class Hanging extends StatelessWidget {
       crossAxisAlignment: CrossAxisAlignment.start,
       mainAxisSize: MainAxisSize.min,
       children: [
-        Container(
-          height: strong ? 1.5 : 1,
-          color: strong ? c.muted : c.rule,
-        ),
+        Container(height: strong ? 1.5 : 1, color: strong ? c.muted : c.rule),
         SizedBox(height: gap),
         child,
       ],
@@ -37,8 +30,6 @@ class Hanging extends StatelessWidget {
   }
 }
 
-/// Uppercase mono. Angas, metadata, states — anything that labels rather than
-/// speaks.
 class MonoLabel extends StatelessWidget {
   const MonoLabel(this.text, {super.key, this.color, this.align});
 
@@ -48,13 +39,12 @@ class MonoLabel extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) => Text(
-        text.toUpperCase(),
-        textAlign: align,
-        style: AppType.label.copyWith(color: color ?? context.colors.muted),
-      );
+    text.toUpperCase(),
+    textAlign: align,
+    style: AppType.label.copyWith(color: color ?? context.colors.muted),
+  );
 }
 
-/// A taxonomy chip. [active] means the practice actually touches this limb.
 class AngaChip extends StatelessWidget {
   const AngaChip(this.label, {super.key, this.active = false});
 
@@ -81,8 +71,6 @@ class AngaChip extends StatelessWidget {
   }
 }
 
-/// Sanskrit. Never translated, so it gets its own widget and its own face —
-/// which also makes it obvious in review when someone tries to localize it.
 class Sanskrit extends StatelessWidget {
   const Sanskrit(this.devanagari, {super.key, this.size, this.color});
 
@@ -92,22 +80,17 @@ class Sanskrit extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) => Text(
-        devanagari,
-        style: AppType.sanskrit.copyWith(
-          fontSize: size,
-          color: color ?? context.colors.accent,
-        ),
-      );
+    devanagari,
+    style: AppType.sanskrit.copyWith(
+      fontSize: size,
+      color: color ?? context.colors.accent,
+    ),
+  );
 }
 
-/// Continuity as density, not as a streak counter. A light day fades; it does
-/// not break anything. Yoga Sutra I.14 is about the absence of gaps, not about
-/// intensity, and punishing a soft day would contradict the text the app is
-/// built on.
 class ContinuityStrip extends StatelessWidget {
   const ContinuityStrip({super.key, required this.secondsPerDay});
 
-  /// One entry per day, oldest first.
   final List<int> secondsPerDay;
 
   @override

@@ -3,11 +3,6 @@ import 'dart:io';
 
 import 'package:flutter_test/flutter_test.dart';
 
-/// Guards the language architecture itself.
-///
-/// gen-l10n writes l10n_missing.json, but nothing fails the build over it.
-/// This does. A missing key must break CI, not fall back to English in front
-/// of a paying user.
 void main() {
   final dir = Directory('lib/l10n');
 
@@ -15,20 +10,20 @@ void main() {
       jsonDecode(File('${dir.path}/$file').readAsStringSync())
           as Map<String, dynamic>;
 
-  /// Keys only — the @-prefixed entries are metadata, not strings.
   Set<String> keysOf(Map<String, dynamic> arb) =>
       arb.keys.where((k) => !k.startsWith('@')).toSet();
 
   final template = load('app_en.arb');
   final templateKeys = keysOf(template);
 
-  final languages = dir
-      .listSync()
-      .whereType<File>()
-      .map((f) => f.uri.pathSegments.last)
-      .where((n) => n.startsWith('app_') && n.endsWith('.arb'))
-      .toList()
-    ..sort();
+  final languages =
+      dir
+          .listSync()
+          .whereType<File>()
+          .map((f) => f.uri.pathSegments.last)
+          .where((n) => n.startsWith('app_') && n.endsWith('.arb'))
+          .toList()
+        ..sort();
 
   test('there is more than one language, or none of this was worth it', () {
     expect(languages.length, greaterThanOrEqualTo(2));
@@ -81,9 +76,6 @@ void main() {
   }
 
   test('corpus content never leaks into the UI strings', () {
-    // Sutras, asana descriptions and articles belong in the database with a
-    // locale column, so a new translation ships without an app release.
-    // Devanagari in an .arb file is the first sign that line is being crossed.
     final devanagari = RegExp(r'[ऀ-ॿ]');
     for (final file in languages) {
       final arb = load(file);
