@@ -2,10 +2,10 @@ import '../../core/domain/asana.dart';
 import 'asanas/adho_mukha_svanasana.dart';
 import 'asanas/balasana.dart';
 import 'asanas/tadasana.dart';
-import 'asanas/trikonasana.dart';
-import 'asanas/virabhadrasana_ii.dart';
 import 'asanas/translations_en.dart';
 import 'asanas/translations_es.dart';
+import 'asanas/trikonasana.dart';
+import 'asanas/virabhadrasana_ii.dart';
 
 abstract final class AsanaCatalogue {
   static const asanas = <Asana>[

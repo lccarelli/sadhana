@@ -24,7 +24,6 @@ class JournalNoteField extends StatelessWidget {
           TextField(
             controller: controller,
             maxLines: 5,
-            autofocus: false,
             style: AppType.readingBody.copyWith(fontSize: 14.5, color: c.ink2),
             decoration: InputDecoration(
               hintText: l.journalNoteHint,

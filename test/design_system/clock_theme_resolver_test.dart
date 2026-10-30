@@ -38,9 +38,9 @@ void main() {
 
     test('flips exactly on the boundary, not a minute early or late', () {
       expect(resolver.brightnessAt(at(6, 59)), Brightness.dark);
-      expect(resolver.brightnessAt(at(7, 0)), Brightness.light);
+      expect(resolver.brightnessAt(at(7)), Brightness.light);
       expect(resolver.brightnessAt(at(19, 59)), Brightness.light);
-      expect(resolver.brightnessAt(at(20, 0)), Brightness.dark);
+      expect(resolver.brightnessAt(at(20)), Brightness.dark);
     });
 
     test('finds the next boundary so one timer replaces polling', () {

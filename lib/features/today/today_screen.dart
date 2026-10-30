@@ -25,9 +25,9 @@ class TodayScreen extends ConsumerWidget {
         actions: [
           IconButton(
             icon: const Icon(Icons.tune, size: 20),
-            onPressed: () => Navigator.of(
-              context,
-            ).push(MaterialPageRoute(builder: (_) => const SettingsScreen())),
+            onPressed: () => Navigator.of(context).push(
+              MaterialPageRoute<void>(builder: (_) => const SettingsScreen()),
+            ),
           ),
         ],
       ),

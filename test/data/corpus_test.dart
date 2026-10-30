@@ -1,7 +1,7 @@
 import 'package:flutter_test/flutter_test.dart';
 import 'package:sadhana/core/domain/anga.dart';
-import 'package:sadhana/data/corpus/seed_corpus.dart';
 import 'package:sadhana/data/corpus/in_memory_corpus_repository.dart';
+import 'package:sadhana/data/corpus/seed_corpus.dart';
 
 void main() {
   const repo = InMemoryCorpusRepository();

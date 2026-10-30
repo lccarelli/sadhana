@@ -73,6 +73,7 @@ FIGURE_OUT=/tmp/figures flutter test test/render_figures.dart
 
 | Suite | Covers |
 |---|---|
+| `test/architecture` | Layer boundaries: no Flutter in `core`, corpus and sadhana never import each other |
 | `test/core` | Breath patterns and the session runner state machine |
 | `test/data` | Repositories, recorder checkpoints, step codec, corpus and asana catalogue invariants |
 | `test/data/migration_test.dart` | Opens a hand-written v1 database with the current schema |

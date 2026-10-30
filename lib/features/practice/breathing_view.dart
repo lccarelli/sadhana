@@ -1,12 +1,12 @@
 import 'package:flutter/material.dart';
 
+import '../../core/domain/breath.dart';
+import '../../core/domain/practice_step.dart';
 import '../../core/usecases/session_runner.dart';
 import '../../design_system/tokens.dart';
 import '../../design_system/typography.dart';
 import '../../design_system/widgets.dart';
 import '../../l10n/l10n_x.dart';
-import '../../core/domain/breath.dart';
-import '../../core/domain/practice_step.dart';
 import 'breath_ring.dart';
 
 class BreathingView extends StatelessWidget {

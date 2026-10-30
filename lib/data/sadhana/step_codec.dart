@@ -108,9 +108,6 @@ abstract final class StepCodec {
       duration: Duration(minutes: 3),
     ),
     StepKind.silence => const SilenceStep(duration: Duration(minutes: 5)),
-    StepKind.reading => const ReadingStep(
-      textId: 'ys.1.2',
-      duration: Duration(minutes: 2),
-    ),
+    StepKind.reading => const ReadingStep(textId: 'ys.1.2'),
   };
 }

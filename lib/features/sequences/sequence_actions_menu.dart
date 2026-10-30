@@ -15,7 +15,9 @@ class SequenceActionsMenu extends ConsumerWidget {
   final PracticeSequence sequence;
 
   Future<void> _edit(BuildContext context) => Navigator.of(context).push(
-    MaterialPageRoute(builder: (_) => SequenceEditorScreen(editing: sequence)),
+    MaterialPageRoute<void>(
+      builder: (_) => SequenceEditorScreen(editing: sequence),
+    ),
   );
 
   Future<void> _duplicate(BuildContext context, WidgetRef ref) async {

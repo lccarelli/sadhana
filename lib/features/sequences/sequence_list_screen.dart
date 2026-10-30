@@ -24,9 +24,9 @@ class SequenceListScreen extends ConsumerWidget {
       floatingActionButton: FloatingActionButton.extended(
         backgroundColor: c.accent,
         foregroundColor: c.onAccent,
-        onPressed: () => Navigator.of(
-          context,
-        ).push(MaterialPageRoute(builder: (_) => const SequenceEditorScreen())),
+        onPressed: () => Navigator.of(context).push(
+          MaterialPageRoute<void>(builder: (_) => const SequenceEditorScreen()),
+        ),
         icon: const Icon(Icons.add, size: 18),
         label: Text(l.sequencesNew),
       ),

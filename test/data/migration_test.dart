@@ -105,7 +105,7 @@ void main() {
       final practisedAt = DateTime.fromMillisecondsSinceEpoch(
         1755300000 * 1000,
       );
-      final days = await db.continuity(today: practisedAt, days: 14);
+      final days = await db.continuity(today: practisedAt);
 
       expect(days.last, 1452, reason: 'the old session is the last bucket');
     });

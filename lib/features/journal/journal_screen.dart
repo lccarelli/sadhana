@@ -6,8 +6,8 @@ import '../../design_system/tokens.dart';
 import '../../design_system/typography.dart';
 import '../../design_system/widgets.dart';
 import '../../l10n/l10n_x.dart';
-import 'journal_empty.dart';
 import 'history_row.dart';
+import 'journal_empty.dart';
 
 class JournalScreen extends ConsumerWidget {
   const JournalScreen({super.key});

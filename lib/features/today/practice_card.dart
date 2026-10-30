@@ -29,7 +29,9 @@ class PracticeCard extends StatelessWidget {
         children: [
           InkWell(
             onTap: () => Navigator.of(context).push(
-              MaterialPageRoute(builder: (_) => const SequenceListScreen()),
+              MaterialPageRoute<void>(
+                builder: (_) => const SequenceListScreen(),
+              ),
             ),
             child: Row(
               children: [
@@ -69,7 +71,7 @@ class PracticeCard extends StatelessWidget {
             width: double.infinity,
             child: FilledButton(
               onPressed: () => Navigator.of(context).push(
-                MaterialPageRoute(
+                MaterialPageRoute<void>(
                   builder: (_) => PracticeScreen(sequence: sequence),
                 ),
               ),

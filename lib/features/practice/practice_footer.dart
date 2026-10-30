@@ -1,10 +1,10 @@
 import 'package:flutter/material.dart';
 
+import '../../core/domain/practice_sequence.dart';
 import '../../core/usecases/session_runner.dart';
 import '../../design_system/tokens.dart';
 import '../../design_system/widgets.dart';
 import '../../l10n/l10n_x.dart';
-import '../../core/domain/practice_sequence.dart';
 import 'step_progress.dart';
 
 class PracticeFooter extends StatelessWidget {

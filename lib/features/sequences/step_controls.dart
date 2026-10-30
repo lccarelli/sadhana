@@ -25,7 +25,9 @@ class StepControls extends StatelessWidget {
       mainAxisSize: MainAxisSize.min,
       crossAxisAlignment: CrossAxisAlignment.stretch,
       children: switch (step) {
-        BreathStep step => [BreathControls(step: step, onChanged: onChanged)],
+        final BreathStep step => [
+          BreathControls(step: step, onChanged: onChanged),
+        ],
         AsanaStep(:final asanaId, :final hold, :final side) => [
           MonoLabel(l.stepPosture),
           const SizedBox(height: 6),

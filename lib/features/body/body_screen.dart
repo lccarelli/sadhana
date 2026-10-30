@@ -42,7 +42,7 @@ class BodyScreen extends StatelessWidget {
               for (final asana in AsanaCatalogue.asanas)
                 InkWell(
                   onTap: () => Navigator.of(context).push(
-                    MaterialPageRoute(
+                    MaterialPageRoute<void>(
                       builder: (_) => AsanaScreen(asana: asana),
                     ),
                   ),

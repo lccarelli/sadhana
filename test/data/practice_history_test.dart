@@ -29,7 +29,7 @@ void main() {
       await practise(today.subtract(const Duration(days: 2)), 10);
       await practise(today.subtract(const Duration(days: 2, hours: 6)), 5);
 
-      final days = await db.continuity(today: today, days: 14);
+      final days = await db.continuity(today: today);
 
       expect(days, hasLength(14));
       expect(days.last, 20 * 60, reason: 'today is the last bucket');

@@ -77,7 +77,7 @@ class _PracticeScreenState extends ConsumerState<PracticeScreen>
     if (!mounted) return;
 
     await Navigator.of(context).pushReplacement(
-      MaterialPageRoute(
+      MaterialPageRoute<void>(
         builder: (_) => JournalEntryScreen(
           sessionId: sessionId,
           practised: _controller.snapshot.elapsedTotal,

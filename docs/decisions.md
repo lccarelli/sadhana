@@ -64,7 +64,9 @@ lib/
   l10n/              *.arb + the domain→language edge (l10n_x.dart)
 ```
 
-`core/domain` importing Flutter is the one rule worth being rigid about. It is
+`core/domain` importing Flutter is the one rule worth being rigid about, and
+`test/architecture/layers_test.dart` enforces it together with the other
+layer boundaries. It is
 what lets a 24-minute practice be tested in microseconds with no emulator:
 `SessionRunner` owns no `Timer` and never reads the clock — time is pushed in
 from outside via `advance()`.
