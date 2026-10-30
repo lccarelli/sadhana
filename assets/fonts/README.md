@@ -9,8 +9,15 @@ to system fonts, which is fine on iOS and wrong on Android.
 
     https://fonts.google.com/noto/specimen/Noto+Sans+Devanagari
 
-Download the static `NotoSansDevanagari-Regular.ttf` into this folder, then
-uncomment the `fonts:` block in `pubspec.yaml`.
+Download the static `NotoSansDevanagari-Regular.ttf` into this folder, then add
+under `flutter:` in `pubspec.yaml`:
+
+```yaml
+  fonts:
+    - family: NotoSansDevanagari
+      fonts:
+        - asset: assets/fonts/NotoSansDevanagari-Regular.ttf
+```
 
 Adds roughly 200 KB. Non-negotiable: Android has no guaranteed Indic face, and
 without this the sanskrit renders as empty boxes on a large slice of devices.
@@ -31,6 +38,7 @@ paid app:
 - **EB Garamond** — OFL, most classical, lightest on the page
 
 Pick one, drop the regular and italic here as `display-regular.ttf` /
-`display-italic.ttf`, and uncomment the second `fonts:` entry. Then delete the
+`display-italic.ttf`, and add a second `fonts:` entry with
+`family: IowanOldStyle` pointing at them. Then delete the
 iOS-only names from `Faces.display` in `lib/design_system/typography.dart` so
 both platforms render identically.

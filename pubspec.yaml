@@ -1,7 +1,5 @@
 name: sadhana
-description: >-
-  Yoga practice and study. Package name is domain-based on purpose: the
-  commercial name lives in l10n/branding and can change without touching Dart.
+description: Yoga practice and study.
 publish_to: 'none'
 version: 0.1.0+1
 
@@ -13,17 +11,8 @@ dependencies:
     sdk: flutter
   flutter_localizations:
     sdk: flutter
-
-  # State. Riverpod because the runner is a state machine with timers that
-  # must survive screen-off and rebuilds.
   flutter_riverpod: ^2.6.1
-
-  # i18n
   intl: any
-
-  # Sadhana storage — local-first, this device is the source of truth.
-  # drift_flutter bundles the sqlite3 native libs and path resolution; the
-  # older sqlite3_flutter_libs + path_provider pairing is now end-of-life.
   drift: ^2.28.2
   drift_flutter: ^0.2.4
   path: ^1.9.1
@@ -37,20 +26,4 @@ dev_dependencies:
 
 flutter:
   uses-material-design: true
-
-  # Required for gen-l10n to emit importable code from lib/l10n/*.arb.
   generate: true
-
-  # Devanagari must be bundled, never borrowed from the OS: Android cannot be
-  # trusted to have an Indic face installed, and the sanskrit is not optional.
-  # Uncomment once the .ttf files are in place — see assets/fonts/README.md.
-  # Until then the app falls back to the system face, which works on iOS and
-  # degrades on Android.
-  #
-  # fonts:
-  #   - family: NotoSansDevanagari
-  #     fonts:
-  #       - asset: assets/fonts/NotoSansDevanagari-Regular.ttf
-  #   - family: IowanOldStyle
-  #     fonts:
-  #       - asset: assets/fonts/display-regular.ttf
